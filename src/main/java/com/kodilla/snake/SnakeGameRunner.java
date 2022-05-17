@@ -81,11 +81,11 @@ public class SnakeGameRunner {
 
         timeline();
 
-        assetEvent.getHighScoreSceneButtonAction(highScoreScene, highScore);
-        assetEvent.getStartGameButtonAction(gameScene, timeline, game, snake, food, handler, highScore);
-        assetEvent.getResumeGameButtonAction(gameScene, timeline, game);
-        assetEvent.getReturnToMainMenuButtonAction(mainMenuScene);
-        assetEvent.getExitButtonAction(highScore);
+        assetEvent.handleOnHighScoreSceneButtonAction(highScoreScene, highScore);
+        assetEvent.handleOnStartGameButtonAction(gameScene, timeline, game, snake, food, handler, highScore);
+        assetEvent.handleOnResumeGameButtonAction(gameScene, timeline, game);
+        assetEvent.handleOnReturnToMainMenuButtonAction(mainMenuScene);
+        assetEvent.handleOnExitButtonAction(highScore);
 
         stage.setOnCloseRequest(e -> highScore.closeApplicationEvent());
 

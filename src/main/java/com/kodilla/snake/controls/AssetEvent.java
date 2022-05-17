@@ -2,7 +2,6 @@ package com.kodilla.snake.controls;
 
 import com.kodilla.snake.Game;
 import com.kodilla.snake.score.HighScore;
-import com.kodilla.snake.score.Score;
 import com.kodilla.snake.gameobject.Food;
 import com.kodilla.snake.gameobject.Snake;
 import com.kodilla.snake.gui.Asset;
@@ -26,8 +25,8 @@ public class AssetEvent {
         this.stage = stage;
     }
 
-    public void getStartGameButtonAction(GameScene gameScene, Timeline timeline, Game game, Snake snake,
-                                         Food food, Handler handler, HighScore highScore) {
+    public void handleOnStartGameButtonAction(GameScene gameScene, Timeline timeline, Game game, Snake snake,
+                                              Food food, Handler handler, HighScore highScore) {
         asset.getStartGameButton().setOnAction(event -> {
             if (!timeline.getStatus().equals(Animation.Status.STOPPED)) {
                 highScore.saveScoreToList();
@@ -38,7 +37,7 @@ public class AssetEvent {
         });
     }
 
-    public void getResumeGameButtonAction(GameScene gameScene, Timeline timeline, Game game) {
+    public void handleOnResumeGameButtonAction(GameScene gameScene, Timeline timeline, Game game) {
         if (timeline.getStatus().equals(Animation.Status.STOPPED)) {
             asset.getResumeGameButton().setDisable(true);
         }
@@ -49,18 +48,18 @@ public class AssetEvent {
         });
     }
 
-    public void getHighScoreSceneButtonAction(HighScoreScene highScoreScene, HighScore highScore) {
+    public void handleOnHighScoreSceneButtonAction(HighScoreScene highScoreScene, HighScore highScore) {
         asset.getHighScoresSceneButton().setOnAction(event -> {
             asset.getHighScoresLabel().setText(highScore.showTopTenScores());
             stage.setScene(highScoreScene.getHighScoreScene());
         });
     }
 
-    public void getReturnToMainMenuButtonAction(MainMenuScene mainMenuScene) {
+    public void handleOnReturnToMainMenuButtonAction(MainMenuScene mainMenuScene) {
         asset.getReturnToMainMenuButton().setOnAction(event -> stage.setScene(mainMenuScene.getMainMenuScene()));
     }
 
-    public void getExitButtonAction(HighScore highScore) {
+    public void handleOnExitButtonAction(HighScore highScore) {
         asset.getExitButton().setOnAction(event -> {
             highScore.closeApplicationEvent();
             System.exit(0);
